@@ -1,6 +1,7 @@
 import { NextPage } from "next";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface PiitaItem {
   id: number;
@@ -9,19 +10,20 @@ interface PiitaItem {
 }
 
 interface State {
-  items: PiitaItem[];
+  item: PiitaItem;
 }
 
 const Index: NextPage = () => {
-  const [state, setState] = useState<State>({ items: [] });
-  const { items } = state;
+  const router = useRouter();
+  const [state, setState] = useState<State>({ item: { id: 0, title: "", body: "" } });
+  const { item } = state;
 
-  async function fetchItems() {
-    setState({ items: await (await fetch("/api/piita/items")).json() });
+  async function fetchItem() {
+    setState({ item: await (await fetch(`/api/piita/items/${router.query.id}`)).json() });
   }
 
   useEffect(() => {
-    fetchItems();
+    fetchItem();
   }, []);
 
   return (
@@ -36,11 +38,8 @@ const Index: NextPage = () => {
       }
     `}</style>
     <div className="container">
-      <h1>Piita item</h1>
-      <a href="/piita/edit">edit</a>
-      <ul>{items.map((item, i) =>
-        <li key={i}><Link href={`/piita/[id]`} as={`/piita/${item.id}`} ><a>{item.title}</a></Link></li>
-      )}</ul>
+      <h1>{item.title}</h1>
+      <p>{item.body}</p>
     </div>
     </>
   );

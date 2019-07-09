@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
 import fetch from "node-fetch";
-import { response } from "../../response";
 
 interface QiitaItem {
   rendered_body: string;

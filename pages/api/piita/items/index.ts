@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { save, list } from "../../../db/Piita";
+import { save, list } from "../../../../db/Piita";
 
 interface PostRequestBody {
   title: string;
@@ -13,6 +13,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     case "get":
       return get(req, res);
   }
+  res.end();
 }
 
 async function post(req: NextApiRequest, res: NextApiResponse) {
