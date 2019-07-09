@@ -1,0 +1,19 @@
+{
+  "name": "first-next",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^12.6.1",
+    "@types/node-fetch": "^2.3.7",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "@types/sqlite3": "^3.1.5",
+    "next": "^9.0.0",
+    "node-fetch": "^2.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "sqlite3": "^4.0.9",
+    "typescript": "^3.5.3"
+  }
+}
