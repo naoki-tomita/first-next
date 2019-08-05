@@ -12,7 +12,9 @@ async function init() {
 
 init();
 
-export async function list(): Promise<Array<{ id: number, title: string, body: string }>> {
+export async function list(): Promise<
+  Array<{ id: number; title: string; body: string }>
+> {
   return await all(`
     SELECT * FROM piita;
   `);
@@ -24,7 +26,9 @@ export async function save(title: string, body: string) {
   `);
 }
 
-export async function getItem(id: number): Promise<{ id: number, title: string, body: string }> {
+export async function getItem(
+  id: number
+): Promise<{ id: number; title: string; body: string }> {
   return await get(`
     SELECT * FROM piita WHERE id = ${id};
   `);

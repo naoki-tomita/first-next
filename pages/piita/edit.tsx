@@ -18,25 +18,41 @@ const Index: NextPage = () => {
   }
 
   function onSend() {
-    fetch("/api/piita/items", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ title, body }) });
+    fetch("/api/piita/items", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ title, body })
+    });
   }
   return (
     <>
-    <style jsx global>{`
-      .container {
-        width: 920px;
-        margin: auto;
-      }
-      h1 {
-        font-weight: bold;
-      }
-    `}</style>
-    <div className="container">
-      <h1>Piita edit</h1>
-      <div><input onChange={el => onChangeTitle(el.target.value)} value={title} /></div>
-      <div><textarea onChange={el => onChangeBody(el.target.value)} value={body} /></div>
-      <div><button onClick={onSend}>send</button></div>
-    </div>
+      <style jsx global>{`
+        .container {
+          width: 920px;
+          margin: auto;
+        }
+        h1 {
+          font-weight: bold;
+        }
+      `}</style>
+      <div className="container">
+        <h1>Piita edit</h1>
+        <div>
+          <input
+            onChange={el => onChangeTitle(el.target.value)}
+            value={title}
+          />
+        </div>
+        <div>
+          <textarea
+            onChange={el => onChangeBody(el.target.value)}
+            value={body}
+          />
+        </div>
+        <div>
+          <button onClick={onSend}>send</button>
+        </div>
+      </div>
     </>
   );
 };
