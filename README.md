@@ -2,6 +2,8 @@
 
 First Next.js app.
 
+[demo](https://first-next.herokuapp.com/)
+
 # app
 
 ## `/`
