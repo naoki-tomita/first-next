@@ -80,22 +80,6 @@ const Qiita: NextPage<Props, Props> = props => {
   );
 };
 
-class Cache {
-  lastGet: number = 0;
-  cache: any = null;
-  get() {
-    if (Date.now() - this.lastGet > 60000) {
-      return null;
-    }
-    this.lastGet = Date.now();
-    return this.cache;
-  }
-
-  set(data: any) {
-    this.cache = data;
-  }
-}
-
 async function fetchQiitaItems() {
   return await (await fetch(
     "https://qiita.com/api/v2/items?per_page=100"
